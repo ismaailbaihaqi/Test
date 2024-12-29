@@ -8,9 +8,6 @@ import seaborn as sns
 try:
     day_data = pd.read_csv('day_preprocessed.csv')
     hour_data = pd.read_csv('hour_preprocessed.csv')
-except FileNotFoundError:
-    st.error("One or both of the CSV files are missing. Please ensure 'day_preprocessed.csv' and 'hour_preprocessed.csv' are in the same directory.")
-    st.stop()
 
 # Streamlit app configuration
 st.set_page_config(page_title="Bike Sharing Analysis", layout="wide")
