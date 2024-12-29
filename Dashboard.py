@@ -5,8 +5,12 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load datasets
-day_data = pd.read_csv('day_preprocessed.csv')
-hour_data = pd.read_csv('hour_preprocessed.csv')
+try:
+    day_data = pd.read_csv('day_preprocessed.csv')
+    hour_data = pd.read_csv('hour_preprocessed.csv')
+except FileNotFoundError:
+    st.error("One or both of the CSV files are missing. Please ensure 'day_preprocessed.csv' and 'hour_preprocessed.csv' are in the same directory.")
+    st.stop()
 
 # Streamlit app configuration
 st.set_page_config(page_title="Bike Sharing Analysis", layout="wide")
@@ -135,7 +139,6 @@ elif plot_choice == "Average Duration: Weekday vs Weekend":
     ax.set_xlabel('Tipe Hari', fontsize=12)
     ax.set_ylabel('Durasi Penyewaan Rata-rata (jam)', fontsize=12)
     st.pyplot(fig)
-
 
 # Summary statistics
 st.subheader("Summary Statistics")
